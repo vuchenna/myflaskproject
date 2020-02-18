@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 <h3>>Take a look at our repository of music </h3>
 {% block body_content %}
-{% for item in upload %}
+
 <div>
 	<table>
 		<tr>
@@ -11,24 +11,32 @@
 			<th>Date </th>
 			<th>Mood/Activity</th>
 			<th>Link</th>
-		</tr>
+		</tr>	
+		{% for upload in uploads %}
+
 		<tr>
+
 			<td> {{ upload.title }}</td>
 			<td>{{ upload.creator.first_name }} {{ upload.creator.last_name }} </td>
 			<td> {{ upload.date_posted }} </td>
 			<td> {{ upload.category }} </td>
-			<td> {{ upload.link }} </td>
+			<td> <a href="{{ upload.link }}">Link</a> </td>
+			
 
 
 
 		</tr>
 
+		<br>
+		<br>
+
+			{% endfor %}
 
 
+	
 	</table>
 
 
 </div>
-{% endfor %}
 
 {% endblock %}

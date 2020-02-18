@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, BooleanField
+from wtforms import StringField, SubmitField, PasswordField, BooleanField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from application.models import Users
 
@@ -11,11 +11,10 @@ class UploadForm(FlaskForm):
                 ]
             )
 
-    category = StringField('Category',
+    category = SelectField('Category',
             validators=[
-                DataRequired(),
-                Length(min=4, max=8)
-                ]
+                DataRequired()
+                ], choices = [("ACTIVITY", "Activity"),("MOOD", "Mood")]
             )
     link = StringField('Link',
             validators=[

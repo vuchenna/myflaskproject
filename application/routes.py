@@ -10,9 +10,10 @@ from flask_login import login_user, current_user, logout_user, login_required
 def home(): 
      return render_template('home.html', title='Home')
 
-@app.route('/music')
+@app.route('/music', methods=['GET', 'POST'])
 def music():
-    return render_template('music.html', title='Music')
+    uploads = Upload.query.all()
+    return render_template('music.html', title='Music', uploads=uploads)
 
 
 
@@ -55,7 +56,6 @@ def login():
 
 @app.route('/upload', methods=['GET','POST'])
 @login_required
-
 def upload():
     form = UploadForm()
     if form.validate_on_submit():
@@ -64,7 +64,6 @@ def upload():
                 category=form.category.data,
                 link=form.link.data,
                 creator=current_user
-
             )
         db.session.add(uploadData)
         db.session.commit()

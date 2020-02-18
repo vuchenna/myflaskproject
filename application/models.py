@@ -7,7 +7,7 @@ class Upload(db.Model):
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     title = db.Column(db.String(100), nullable=False, unique=True)
-    category = db.Column(db.String(8), nullable=False,unique=True)
+    category = db.Column(db.String(8), nullable=False)
     link = db.Column(db.String(1000), nullable=False, unique=True)
 
     def __repr__(self):
