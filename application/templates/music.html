@@ -2,6 +2,28 @@
 <h3>>Take a look at our repository of music </h3>
 {% block body_content %}
 
+<div class ='form'>
+	<br>
+<form method='POST' action=''>
+	{{ form.hidden_tag() }}
+	{{ form.search.label }}
+	{{ form.search }}
+	{{ form.submit }}
+
+</form>
+	
+</div>
+<br>
+<div>
+{% for result in results %}
+{{result.title}}
+{{result.category}}
+<a href="{{result.link}}">Link</a>
+
+{% endfor %}
+</div>
+<br>
+<br>
 <div>
 	<table>
 		<tr>
@@ -11,7 +33,7 @@
 			<th>Date </th>
 			<th>Mood/Activity</th>
 			<th>Link</th>
-		</tr>	
+		</tr>
 		{% for upload in uploads %}
 
 		<tr>

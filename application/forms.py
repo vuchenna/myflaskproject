@@ -85,5 +85,9 @@ class LoginForm(FlaskForm):
         )
 
     remember = BooleanField('Remember Me')
-    submit = SubmitField('Login')
 
+
+
+class SearchForm(FlaskForm):
+    search=StringField('search', validators =[ DataRequired()])
+    submit = SubmitField('search')

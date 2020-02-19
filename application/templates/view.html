@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block body_content %}<div>
+	<table class="table">
+		<thead class="thead-dark">			<th>Music Name </th>
+			<th scope="col">Creator </th>
+			<th scope="col">Date </th>
+			<th scope="col">Mood/Activity</th>
+			<th scope="col">Link</th>
+			<th scope="col">Options</th>
+		</thead>	
+		{% for upload in uploads %}		<tr>			<td> {{ upload.title }}</td>
+			<td>{{ upload.creator.first_name }} {{ upload.creator.last_name }} </td>
+			<td> {{ upload.date_posted }} </td>
+			<td> {{ upload.category }} </td>
+            <td><a href='{{ upload.link }}'>YouTube Link</a> </td>
+            <td>
+                <a class="btn btn-danger" role="button" href='{{ url_for("update", id=upload.id) }}'>edit</a>
+                <a class="btn btn-info" role="button" href='{{ url_for("upload_delete", id=upload.id) }}'>delete</a>
+            </td>
+			</tr>
+        {% endfor %}
+	
+	</table>
+{% endblock %}
+
