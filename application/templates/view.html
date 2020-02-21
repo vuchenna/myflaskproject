@@ -14,8 +14,11 @@
 			<td> {{ upload.category }} </td>
             <td><a href='{{ upload.link }}'>YouTube Link</a> </td>
             <td>
-                <a class="btn btn-danger" role="button" href='{{ url_for("update", id=upload.id) }}'>edit</a>
-                <a class="btn btn-info" role="button" href='{{ url_for("upload_delete", id=upload.id) }}'>delete</a>
+                <a class="btn btn-danger" role="button" href='{{ url_for("update", id=upload.id) }}'>Edit</a>
+                <a class="btn btn-danger" role="button" href='{{ url_for("remove", id=upload.id) }}'>Remove</a>
+                {% if current_user.id == upload.user_id %}
+                    <a class="btn btn-info" role="button" href='{{ url_for("upload_delete", id=upload.id) }}'>Delete</a>
+                {% endif %}
             </td>
 			</tr>
         {% endfor %}

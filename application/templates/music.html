@@ -43,10 +43,7 @@
 			<td> {{ upload.date_posted }} </td>
 			<td> {{ upload.category }} </td>
 			<td> <a href="{{ upload.link }}">Link</a> </td>
-			
-
-
-
+			<td> <a href="{{ url_for("add", id=upload.id) }}">Add Song</a> </td>
 		</tr>
 
 		<br>

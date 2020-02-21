@@ -12,7 +12,7 @@ class Upload(db.Model):
 
     def __repr__(self):
         return ''.join([
-            'User ID: ', self.user_id, '\r\n',
+            'User ID: ', str(self.user_id), '\r\n',
             'Title: ', self.title, '\r\n', self.category, '\r\n', self.link
             ])
 
@@ -35,7 +35,9 @@ class Users(db.Model, UserMixin):
             'Email: ', self.email, '\r\n'
             'Name: ', self.first_name, ' ', self.last_name
             ])
-   
 
-
+class SavedSong(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer)
+    song_id = db.Column(db.Integer)
 

@@ -1,13 +1,13 @@
 from flask import render_template, redirect, url_for, request
 from application import app, db, bcrypt
-from application.models import Users, Upload
-from application.forms import RegistrationForm, LoginForm, UploadForm, SearchForm
+from application.models import Users, Upload, SavedSong
+from application.forms import RegistrationForm, LoginForm, UploadForm, SearchForm, UpdateAccountForm
 from flask_login import login_user, current_user, logout_user, login_required
 
 
 @app.route('/')
 @app.route('/home')
-def home(): 
+def home():
      return render_template('home.html', title='Home')
 
 @app.route('/music', methods=['GET', 'POST'])
@@ -84,15 +84,35 @@ def upload():
 
     return render_template('upload.html', title ='Upload', form=form)
 
+@app.route('/music/add/<id>', methods=['GET', 'POST'])
+@login_required
+def add(id):
+    saved_song = SavedSong.query.filter_by(user_id=current_user.id, song_id=id).first()
+    if saved_song:
+        print('song is already saved')
+        return redirect(url_for('view'))
+    saved_song = SavedSong(user_id=current_user.id, song_id=id)
+    db.session.add(saved_song)
+    db.session.commit()
+    return redirect(url_for('view'))
+
+
+@app.route('/music/remove/<id>', methods=['GET', 'POST'])
+@login_required
+def remove(id):
+    return "Cannot remove songs that isnt owned by you. Try uploading a new song"
 
 @app.route('/view', methods=['GET','POST'])
 @login_required
 def view():
-    id = current_user.id
-    viewData = Upload.query.filter_by(user_id=id).all()
-
-
-    return render_template('view.html', title ='View',uploads = viewData )
+    user = Users.query.filter_by(id=current_user.id).first()
+    saved_songs = SavedSong.query.filter_by(user_id=user.id).all()
+    uploads = []
+    for saved_song in saved_songs:
+        upload = Upload.query.filter_by(id=saved_song.song_id).first()
+        uploads.append(upload)
+    songs = user.upload + uploads
+    return render_template('view.html', title ='View',uploads = songs )
 
 @app.route('/upload/update/<id>',methods=['GET', 'POST'])
 @login_required
@@ -115,9 +135,15 @@ def update(id):
 @login_required
 def upload_delete(id):
     upload = Upload.query.filter_by(id=id).first()
+    if current_user.id != upload.user_id:
+        return redirect(url_for('view'))
     db.session.delete(upload)
+    saved_songs = SavedSong.query.filter_by(song_id=id).all()
+    for saved_song in saved_songs:
+        db.session.delete(saved_song)
     db.session.commit()
     return redirect(url_for('view'))
+
 
 @app.route('/logout')
 def logout():
@@ -127,5 +153,22 @@ def logout():
 
 
 #@app.route('/search_results', methods=['GET', 'POST'])
-#def search_results():
-   
+#def search_results()
+
+
+
+@app.route('/account', methods=['GET', 'POST'])
+@login_required
+def account():
+    form = UpdateAccountForm()
+    if form.validate_on_submit():
+        current_user.first_name = form.first_name.data
+        current_user.last_name = form.last_name.data
+        current_user.email = form_email.data
+        db.session.commit()
+        return redirect(url_for('account'))
+    elif request.method == 'GET':
+        form.first_name.data = current_user.first_name
+        form.last_name.data = current_user.last_name
+        form.email.data = current_user.email
+    return render_template('account.html', title='Account', form=form)
