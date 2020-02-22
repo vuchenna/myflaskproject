@@ -1,9 +1,7 @@
 {% extends "layout.html" %}
-<h3>>Take a look at our repository of music </h3>
 {% block body_content %}
 
-<div class ='form'>
-	<br>
+<div class ='form''h-25 d-inline-block' >
 <form method='POST' action=''>
 	{{ form.hidden_tag() }}
 	{{ form.search.label }}
@@ -11,29 +9,28 @@
 	{{ form.submit }}
 
 </form>
-	
-</div>
-<br>
-<div>
 {% for result in results %}
 {{result.title}}
 {{result.category}}
 <a href="{{result.link}}">Link</a>
 
 {% endfor %}
-</div>
-<br>
-<br>
-<div>
-	<table>
-		<tr>
 
-			<th>Music Name </th>
-			<th>Creator </th>
-			<th>Date </th>
-			<th>Mood/Activity</th>
-			<th>Link</th>
-		</tr>
+</div>
+<center><h2 class="h2">Take a look at our repository of music </h2></center>
+
+<div>
+    <table class="table">
+		<thead class="thead-dark">
+
+			<th scope="col1">Music Name </th>
+			<th scope="col1">Creator </th>
+			<th scope="col1">Date </th>
+			<th scope="col1">Mood/Activity</th>
+			<th scope="col1">Link</th>
+			<th scope="col1">Option</th>
+
+        </thead>
 		{% for upload in uploads %}
 
 		<tr>
@@ -42,8 +39,8 @@
 			<td>{{ upload.creator.first_name }} {{ upload.creator.last_name }} </td>
 			<td> {{ upload.date_posted }} </td>
 			<td> {{ upload.category }} </td>
-			<td> <a href="{{ upload.link }}">Link</a> </td>
-			<td> <a href="{{ url_for("add", id=upload.id) }}">Add Song</a> </td>
+			<td> <a class="btn btn-info" role= "button" href="{{ upload.link }}">Link</a> </td>
+			<td> <a class="btn btn-info" role= "button" href="{{ url_for("add", id=upload.id) }}">Add Song</a> </td>
 		</tr>
 
 		<br>

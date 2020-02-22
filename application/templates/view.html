@@ -2,11 +2,11 @@
 {% block body_content %}<div>
 	<table class="table">
 		<thead class="thead-dark">			<th>Music Name </th>
-			<th scope="col">Creator </th>
-			<th scope="col">Date </th>
-			<th scope="col">Mood/Activity</th>
-			<th scope="col">Link</th>
-			<th scope="col">Options</th>
+			<th scope="col1">Creator </th>
+			<th scope="col1">Date </th>
+			<th scope="col1">Mood/Activity</th>
+			<th scope="col1">Link</th>
+			<th scope="col1">Options</th>
 		</thead>	
 		{% for upload in uploads %}		<tr>			<td> {{ upload.title }}</td>
 			<td>{{ upload.creator.first_name }} {{ upload.creator.last_name }} </td>
@@ -14,10 +14,10 @@
 			<td> {{ upload.category }} </td>
             <td><a href='{{ upload.link }}'>YouTube Link</a> </td>
             <td>
-                <a class="btn btn-danger" role="button" href='{{ url_for("update", id=upload.id) }}'>Edit</a>
-                <a class="btn btn-danger" role="button" href='{{ url_for("remove", id=upload.id) }}'>Remove</a>
+                <a class="btn btn-info" role="button" href='{{ url_for("update", id=upload.id) }}'>Edit</a>
+                <a class="btn btn-info" role="button" href='{{ url_for("remove", id=upload.id) }}'>Remove</a>
                 {% if current_user.id == upload.user_id %}
-                    <a class="btn btn-info" role="button" href='{{ url_for("upload_delete", id=upload.id) }}'>Delete</a>
+                    <a class="btn btn-danger" role="button" href='{{ url_for("upload_delete", id=upload.id) }}'>Delete</a>
                 {% endif %}
             </td>
 			</tr>
