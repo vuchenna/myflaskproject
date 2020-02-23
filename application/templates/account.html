@@ -1,7 +1,10 @@
 {% extends "layout.html" %}
 {% block body_content %}
 
+<br>
 <h4> Hello, {{ current_user.first_name }} {{ current_user.last_name }}  </h4>
+<p><i>Feel free to update your account details</i></p>
+<br>
 	<div class='form'>
 		<form method='POST' action=''>
 			{{ form.hidden_tag() }}

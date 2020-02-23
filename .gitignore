@@ -1,4 +1,7 @@
 venv
 **/*pyc
 **/__pycache__
-museme-venv
+museme*
+chromedriver*
+**/*.swp
+**/*.swo
