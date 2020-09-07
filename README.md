@@ -2,8 +2,8 @@
 
 <i>Pronounced “Muse” + “me” <br>
 A harmonious combination of music and me </i>
-Please click the link below for a presentation on the Museme App
-https://drive.google.com/file/d/1eUQ2-a1ak_CDVr-r-eFgvq670p0nS44q/view?usp=sharing
+<p>Please click the link below for a presentation on the Museme App
+https://drive.google.com/file/d/1eUQ2-a1ak_CDVr-r-eFgvq670p0nS44q/view?usp=sharing</p>
 
 
 <h4>The Brief:</h4>
