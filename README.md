@@ -2,7 +2,7 @@
 
 <i>Pronounced “Muse” + “me” <br>
 A harmonious combination of music and me </i>
-<p>Please click the link below for a presentation on the Museme App</p>
+<p><b>Please click the link below for a presentation on the Museme App<b></p>
 https://drive.google.com/file/d/1eUQ2-a1ak_CDVr-r-eFgvq670p0nS44q/view?usp=sharing
 
 
@@ -45,9 +45,9 @@ Workout, Confidence boosting music (ideal for interviews and presenting), yoga
 
 
 <h4>Architecture</h4>
-<b>Initial ERD</b>
+<p><b>Initial ERD</b></p>
 https://drive.google.com/file/d/1xhfJRzzISMu0QG9N3wSdPId1BSV9c_lM/view?usp=sharing
-<b>Final ERD</b>
+<p><b>Final ERD</b></p>
 https://drive.google.com/file/d/11nCoS7amUsh21hWu3N58jJWuxjRqgBgJ/view?usp=sharing
 
 <h4>Trello Board for project planning</h4>
