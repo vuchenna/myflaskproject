@@ -2,7 +2,7 @@
 
 <i>Pronounced “Muse” + “me” <br>
 A harmonious combination of music and me </i>
-<p><b>Please click the link below for a presentation on the Museme App<b></p>
+<p><b>Please click the link below for a presentation on the Museme App</b></p>
 https://drive.google.com/file/d/1eUQ2-a1ak_CDVr-r-eFgvq670p0nS44q/view?usp=sharing
 
 
